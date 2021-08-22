@@ -1,0 +1,4 @@
+rootProject.name = 'UnitTestingExample'
+include 'main'
+include 'Services'
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Services.UserServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-22T20:31:54" hostname="DESKTOP-BSRS5KJ" time="0.021">
+  <properties/>
+  <testcase name="shouldConcatenateFirstAndLastName()" classname="Services.UserServiceTest" time="0.017"/>
+  <testcase name="shouldThrowExceptionIfFirstNameIsNull()" classname="Services.UserServiceTest" time="0.003"/>
+  <system-out><![CDATA[Before All Test
+Before Each test
+After Each Test
+Before Each test
+After Each Test
+After All Test
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
