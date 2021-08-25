@@ -67,9 +67,10 @@ In our first example, the String.concat function throws a NullPointer exception 
 ```java
 class UserServiceTest {
     @Test
-    void should_ConcatenateFirstAndLastName_when_parametersAreValid() {
-        String fullName = userService.ConcatenateFirstAndLastName("Ana", "Weidner");
-        assertTrue(fullName.equals("AnaWeidner"));
+    void should_throwException_when_firstNameIsNull() {
+        assertThrows(NullPointerException.class, () -> {
+            userService.ConcatenateFirstAndLastName(null, "Weidner");
+        });
     }
 }
 ``` 
