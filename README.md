@@ -130,10 +130,11 @@ public class UserRepository {
     }
 }
 ``` 
-While testing this method, we don't want to deal with any behavior inside the UserRepository Class, so we can mock this class with the @Mock annotation. Since UserService class requires an UserRespotitory for its constructor, we can use the @InjectMocks annotation to inject the mocked or spied classes.
+While testing this method, we don't want to deal with any behavior inside the UserRepository Class. Our main objective is to test the saveOnDatabase method functionality from UserService, ignoring any other behavior from UserRepository.
+To achieve this objective, we can mock the UserRepository class with the **@Mock** annotation. Since UserService class requires an UserRespotitory for its constructor, we can use the **@InjectMocks** annotation to inject the mocked or spied classes.
 
 ```java
-public class UserServiceTest {
+class UserServiceTest {
     @Mock
     private UserRepository userRepository;
     @InjectMocks
@@ -143,7 +144,7 @@ public class UserServiceTest {
 Using the **@Mock @Spy** and **@InjectMocks** it is required to use the openMocks function to initialize all mocks inside this test class:
 
 ```java
-public class UserServiceTest {
+class UserServiceTest {
     @BeforeAll
     public void setupBeforeAll() {
         MockitoAnnotations.openMocks(this);
@@ -154,7 +155,7 @@ public class UserServiceTest {
 Creating a test for the SaveOnDatabase method it is expected it to return true:
 
 ```java
-public class UserServiceTest {
+class UserServiceTest {
     @Test
     void should_callSaveMethodAndGetResultValue_when_SaveOnDatabaseMethodIsCalled() {
         Boolean wasSavedOnDatabase = userService.SaveOnDatabase("AnaWeidner");
@@ -167,9 +168,9 @@ Running this test, we get a failed result. That happens due to the UserRepositor
 Mockito's when method can be used to define mocks behaviors. Fixing the previous example, we are telling the code to return true when it calls the UserRepository.Save function with any parameters:
 
 ```java
-public class UserServiceTest {
+class UserServiceTest {
     @Test
-    void shouldSaveOnDatabase() {
+    void should_callSaveMethodAndGetResultValue_when_SaveOnDatabaseMethodIsCalled() {
         when(userRepository.save(any())).thenReturn(true);
         Boolean wasSavedOnDatabase = userService.SaveOnDatabase("AnaWeidner");
         assertTrue(wasSavedOnDatabase);
@@ -180,9 +181,9 @@ public class UserServiceTest {
 Another way of testing this class is to use the verify method to identify if the UserRepository save method was called at least once during this test execution.
 
 ```java
-public class UserServiceTest {
+class UserServiceTest {
     @Test
-    void shouldSaveOnDatabaseVoidMethod() {
+    void should_callSaveMethod_when_SaveOnDatabaseMethodIsCalled() {
         userService.SaveOnDatabase("AnaWeidner");
         verify(userRepository, atLeastOnce()).save("AnaWeidner");
     }
