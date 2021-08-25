@@ -74,7 +74,7 @@ class UserServiceTest {
 }
 ``` 
 
-There are many more Assertions methods that can be used to assert the code functionality. You can check the full list of assert methods here:
+There are many more Assertions methods that can be used to assert the code functionality. You can check the full list of assert methods [here](https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html).
 
 **@BeforeAll @BeforeEach annotations**
 
@@ -210,3 +210,12 @@ class SpyExampleTest {
 }
 ```
 On the first test, the list size doesn't change since the object is a mocked object and the add method does not behave like the real object. On the second test, the list size returns one since it was not stubbed so the "test" String was added to the real object.
+
+## References:
+
+**Junit User Guide:** https://junit.org/junit5/docs/current/user-guide/
+
+**Mockito Documentation:** https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html
+
+**Uncle Bob's Clean Code Book:** Martin, Robert C. Clean Code: A Handbook of Agile Software Craftsmanship. Upper Saddle River, NJ: Prentice Hall, 2009.
+
