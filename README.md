@@ -195,16 +195,27 @@ Mockito also shares the **@Spy** annotation. Comparing to Mocks, in mocked objec
 
 ```java
 class SpyExampleTest {
+
+    @Mock
+    ArrayList mockedList;
+
+    @Spy
+    ArrayList spiedList;
+
+    @BeforeAll
+    public void SetUpBeforeAll(){
+        MockitoAnnotations.openMocks(this);
+    }
+
     @Test
     public void should_notAddStringToList_when_usingMockedObjects() {
-        List mockedList = mock(ArrayList.class);
         mockedList.add("test");
         verify(mockedList).add("test");
         assertEquals(0, mockedList.size());
     }
+
     @Test
     public void should_addStringToList_when_usingSpiedObjects() {
-        List spiedList = spy(ArrayList.class);
         spiedList.add("test");
         verify(spiedList).add("test");
         assertEquals(1, spiedList.size());
